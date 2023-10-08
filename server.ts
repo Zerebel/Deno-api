@@ -1,3 +1,7 @@
-Deno.serve((_req) => {
-  return new Response("Hello mum!")
+import { fetchJokes } from "./jokes.ts"
+
+Deno.serve(async (_req) => {
+  const response = await fetchJokes()
+
+  return new Response(JSON.stringify(response))
 })
